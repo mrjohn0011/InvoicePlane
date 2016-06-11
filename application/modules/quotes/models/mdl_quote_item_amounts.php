@@ -32,7 +32,7 @@ class Mdl_Quote_Item_Amounts extends CI_Model
 
         $item_price = $item->item_price;
         $item_subtotal = $item->item_quantity * $item_price;
-        $item_tax_total = $item_subtotal * ($item->item_tax_rate_percent / 100);
+        $item_tax_total = get_tax_amount($item_subtotal, $item->item_tax_rate_percent);
         $item_discount_total = $item->item_discount_amount * $item->item_quantity;
         $item_total = $item_subtotal + $item_tax_total - $item_discount_total;
 

@@ -112,6 +112,7 @@ $lang = array(
     'default_invoice_group'                        => 'Категория счетов по умолчанию',
     'default_invoice_tax_rate'                     => 'Налоговая ставка для каждого счета по умолчанию',
     'default_invoice_tax_rate_placement'           => 'Способ начисления налога на счет по умолчанию',
+    'tax_excluded'           					   => 'Налог не входит в сумму счета',
     'default_item_tax_rate'                        => 'Налоговая ставка для каждой услуги по умолчанию',
     'default_list_limit'                           => 'Количество товаров на странице',
     'default_notes'                                => 'Заметка по умолчанию',

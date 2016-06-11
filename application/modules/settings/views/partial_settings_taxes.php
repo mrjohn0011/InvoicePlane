@@ -39,4 +39,16 @@
         </select>
     </div>
 
+    <div class="form-group">
+        <label for="settings[tax_excluded]" class="control-label">
+            <?php echo lang('tax_excluded'); ?>
+        </label>
+
+        <select name="settings[tax_excluded]" class="input-sm form-control">
+            <option value="0"
+                    <?php if (!$this->mdl_settings->setting('tax_excluded')) { ?>selected="selected"<?php } ?>><?php echo lang('no'); ?></option>
+            <option value="1"
+                    <?php if ($this->mdl_settings->setting('tax_excluded')) { ?>selected="selected"<?php } ?>><?php echo lang('yes'); ?></option>
+        </select>
+    </div>
 </div>

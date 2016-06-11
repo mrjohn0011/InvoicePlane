@@ -92,11 +92,13 @@ class Mdl_Quote_Amounts extends CI_Model
             foreach ($quote_tax_rates as $quote_tax_rate) {
                 if ($quote_tax_rate->include_item_tax) {
                     // The quote tax rate should include the applied item tax
-                    $quote_tax_rate_amount = ($quote_amount->quote_item_subtotal + $quote_amount->quote_item_tax_total) * ($quote_tax_rate->quote_tax_rate_percent / 100);
+                    $quote_tax_rate_amount = ($quote_amount->quote_item_subtotal + $quote_amount->quote_item_tax_total);
                 } else {
                     // The quote tax rate should not include the applied item tax
-                    $quote_tax_rate_amount = $quote_amount->quote_item_subtotal * ($quote_tax_rate->quote_tax_rate_percent / 100);
+                    $quote_tax_rate_amount = $quote_amount->quote_item_subtotal;
                 }
+
+                $quote_tax_rate_amount = get_tax_amount($quote_tax_rate_amount, $quote_tax_rate->quote_tax_rate_percent);
 
                 // Update the quote tax rate record
                 $db_array = array(

@@ -121,11 +121,13 @@ class Mdl_Invoice_Amounts extends CI_Model
             foreach ($invoice_tax_rates as $invoice_tax_rate) {
                 if ($invoice_tax_rate->include_item_tax) {
                     // The invoice tax rate should include the applied item tax
-                    $invoice_tax_rate_amount = ($invoice_amount->invoice_item_subtotal + $invoice_amount->invoice_item_tax_total) * ($invoice_tax_rate->invoice_tax_rate_percent / 100);
+                    $invoice_tax_rate_amount = ($invoice_amount->invoice_item_subtotal + $invoice_amount->invoice_item_tax_total);
                 } else {
                     // The invoice tax rate should not include the applied item tax
-                    $invoice_tax_rate_amount = $invoice_amount->invoice_item_subtotal * ($invoice_tax_rate->invoice_tax_rate_percent / 100);
+                    $invoice_tax_rate_amount = $invoice_amount->invoice_item_subtotal;
                 }
+
+                $invoice_tax_rate_amount = get_tax_amount($invoice_tax_rate_amount, $invoice_tax_rate->invoice_tax_rate_percent);
 
                 // Update the invoice tax rate record
                 $db_array = array(

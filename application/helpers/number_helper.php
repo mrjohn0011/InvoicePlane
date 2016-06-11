@@ -56,3 +56,16 @@ function standardize_amount($amount)
 
     return $amount;
 }
+
+function get_tax_amount($amount, $percent){
+    $CI =& get_instance();
+    $tax_part = $percent / 100;
+
+    if ($CI->mdl_settings->setting('tax_excluded')){
+        $tax_amount = $amount / (1 - $tax_part) - $amount;
+    } else {
+        $tax_amount = $amount * $tax_part;
+    }
+
+    return $tax_amount;
+}
