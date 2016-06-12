@@ -68,6 +68,10 @@ class Mdl_Invoices extends Response_Model
 			ip_users.user_email,
 			ip_users.user_web,
 			ip_users.user_vat_id,
+			ip_users.user_bank_id,
+			ip_users.user_bank_name,
+			ip_users.user_payment_account,
+			ip_users.user_correspondent_account,
 			ip_users.user_tax_code,
 			ip_clients.*,
 			ip_invoice_amounts.invoice_amount_id,
@@ -86,7 +90,7 @@ class Mdl_Invoices extends Response_Model
 
     public function default_order_by()
     {
-        $this->db->order_by('ip_invoices.invoice_id DESC');
+        $this->db->order_by('ip_invoices.invoice_date_created DESC');
     }
 
     public function default_join()

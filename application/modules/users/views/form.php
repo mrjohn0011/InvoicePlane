@@ -239,6 +239,54 @@
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 text-right text-left-xs">
                             <label class="control-label">
+                                <?php echo lang('bank_id'); ?>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="text" name="user_bank_id" id="user_bank_id" class="form-control"
+                                   value="<?php echo $this->mdl_users->form_value('user_bank_id'); ?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 text-right text-left-xs">
+                            <label class="control-label">
+                                <?php echo lang('bank_name'); ?>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="text" name="user_bank_name" id="user_bank_name" class="form-control"
+                                   value="<?php echo $this->mdl_users->form_value('user_bank_name'); ?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 text-right text-left-xs">
+                            <label class="control-label">
+                                <?php echo lang('payment_account'); ?>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="text" name="user_payment_account" id="user_payment_account" class="form-control"
+                                   value="<?php echo $this->mdl_users->form_value('user_payment_account'); ?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 text-right text-left-xs">
+                            <label class="control-label">
+                                <?php echo lang('correspondent_account'); ?>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="text" name="user_correspondent_account" id="user_correspondent_account" class="form-control"
+                                   value="<?php echo $this->mdl_users->form_value('user_correspondent_account'); ?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 text-right text-left-xs">
+                            <label class="control-label">
                                 <?php echo lang('tax_code'); ?>
                             </label>
                         </div>

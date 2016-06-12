@@ -278,9 +278,6 @@
                         $this->session->userdata('user_id')); ?>">
                         <?php
                         print($this->session->userdata('user_name'));
-                        if ($this->session->userdata('user_company')) {
-                            print(" (" . $this->session->userdata('user_company') . ")");
-                        }
                         ?>
                     </a>
                 </li>

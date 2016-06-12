@@ -111,6 +111,18 @@ class Mdl_Users extends Response_Model
             'user_vat_id' => array(
                 'field' => 'user_vat_id'
             ),
+            'user_bank_id' => array(
+                'field' => 'user_bank_id'
+            ),
+            'user_bank_name' => array(
+                'field' => 'user_bank_name'
+            ),
+            'user_payment_account' => array(
+                'field' => 'user_payment_account'
+            ),
+            'user_correspondent_account' => array(
+                'field' => 'user_correspondent_account'
+            ),
             'user_tax_code' => array(
                 'field' => 'user_tax_code'
             )
@@ -172,6 +184,18 @@ class Mdl_Users extends Response_Model
             ),
             'user_vat_id' => array(
                 'field' => 'user_vat_id'
+            ),
+            'user_bank_id' => array(
+                'field' => 'user_bank_id'
+            ),
+            'user_bank_name' => array(
+                'field' => 'user_bank_name'
+            ),
+            'user_payment_account' => array(
+                'field' => 'user_payment_account'
+            ),
+            'user_correspondent_account' => array(
+                'field' => 'user_correspondent_account'
             ),
             'user_tax_code' => array(
                 'field' => 'user_tax_code'

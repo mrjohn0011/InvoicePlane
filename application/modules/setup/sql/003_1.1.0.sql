@@ -24,6 +24,14 @@ AFTER `client_vat_id`;
 ALTER TABLE `ip_users`
 ADD COLUMN `user_vat_id` VARCHAR(100) NOT NULL DEFAULT ''
 AFTER `user_web`,
+ADD COLUMN `user_bank_name` VARCHAR(100) NOT NULL DEFAULT ''
+AFTER `user_vat_id`,
+ADD COLUMN `user_bank_id` VARCHAR(100) NOT NULL DEFAULT ''
+AFTER `user_bank_name`,
+ADD COLUMN `user_payment_account` VARCHAR(100) NOT NULL DEFAULT ''
+AFTER `user_bank_id`,
+ADD COLUMN `user_correspondent_account` VARCHAR(100) NOT NULL DEFAULT ''
+AFTER `user_payment_account`,
 ADD COLUMN `user_tax_code` VARCHAR(100) NOT NULL DEFAULT ''
 AFTER `user_vat_id`,
 ADD COLUMN `user_passwordreset_token` VARCHAR(100) DEFAULT ''
