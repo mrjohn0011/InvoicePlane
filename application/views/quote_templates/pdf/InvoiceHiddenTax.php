@@ -14,7 +14,15 @@
     </tr>
     <tr>
         <td>Заказчик:</td>
-        <td><?php echo $quote->client_name; ?></td>
+        <td>
+            <?php echo $quote->client_name; ?>
+            <?
+                if (!empty($quote->client_vat_id)) echo ', ИНН '.$quote->client_vat_id;
+                if (!empty($quote->client_zip)) echo ', '.$quote->client_zip;
+                if (!empty($quote->client_city)) echo ', г. '.$quote->client_city;
+                if (!empty($quote->client_address_1)) echo ', '.$quote->client_address_1;
+            ?>
+            </td>
     </tr>
     <tr>
         <td>Основание:</td>
