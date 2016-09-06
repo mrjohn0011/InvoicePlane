@@ -106,4 +106,20 @@
     <?php endif; ?>
 </footer>
 
+<table style="width: 100%; margin-top: 50px">
+    <tr>
+        <td style="text-align: left">
+            <p><strong>ИСПОЛНИТЕЛЬ</strong></p>
+            <p><?php echo $invoice->user_name; ?></p>
+            <p>________________________</p>
+        </td>
+
+        <td style="text-align: right">
+            <p><strong>ЗАКАЗЧИК</strong></p>
+            <p><?php echo $invoice->client_name; ?></p>
+            <p>________________________</p>
+        </td>
+    </tr>
+</table>
+
 </body>
