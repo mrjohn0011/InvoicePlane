@@ -24,9 +24,10 @@
             ?>
             </td>
     </tr>
+
     <tr>
         <td>Основание:</td>
-        <td>Основной договор</td>
+        <td><?=$quote->quote_grounds;?></td>
     </tr>
 </table>
 

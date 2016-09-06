@@ -48,6 +48,7 @@
                     quote_discount_amount: $('#quote_discount_amount').val(),
                     quote_discount_percent: $('#quote_discount_percent').val(),
                     notes: $('#notes').val(),
+                    quote_grounds: $('#quote_grounds').val(),
                     custom: $('input[name^=custom]').serializeArray()
                 },
                 function (data) {
@@ -299,6 +300,17 @@
                                     <div class="controls">
                                         <input type="text" id="quote_password" class="form-control input-sm"
                                                value="<?php echo $quote->quote_password; ?>">
+                                    </div>
+                                </div>
+
+                                <div class="quote-properties">
+                                    <label for="quote_grounds">
+                                        <?php echo lang('quote_grounds'); ?>
+                                    </label>
+
+                                    <div class="controls">
+                                        <input type="text" id="quote_grounds" class="form-control input-sm"
+                                               value="<?php echo $quote->quote_grounds; ?>">
                                     </div>
                                 </div>
 

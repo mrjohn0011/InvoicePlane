@@ -131,6 +131,10 @@ class Mdl_Quotes extends Response_Model
                 'field' => 'quote_password',
                 'label' => lang('quote_password')
             ),
+            'quote_grounds' => array(
+                'field' => 'quote_grounds',
+                'label' => lang('quote_grounds')
+            ),
             'user_id' => array(
                 'field' => 'user_id',
                 'label' => lang('user'),
@@ -160,6 +164,10 @@ class Mdl_Quotes extends Response_Model
             'quote_password' => array(
                 'field' => 'quote_password',
                 'label' => lang('quote_password')
+            ),
+            'quote_grounds' => array(
+                'field' => 'quote_grounds',
+                'label' => lang('quote_grounds')
             )
         );
     }

@@ -21,6 +21,7 @@
                     client_name: $('#client_name').val(),
                     quote_date_created: $('#quote_date_created').val(),
                     quote_password: $('#quote_password').val(),
+                    quote_grounds: $('#quote_grounds').val(),
                     user_id: '<?php echo $this->session->userdata('user_id'); ?>',
                     invoice_group_id: $('#invoice_group_id').val()
                 },
@@ -90,6 +91,12 @@
                        } else {
                            echo $this->mdl_settings->setting('quote_pre_password');
                        } ?>" style="margin: 0 auto;" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="quote_grounds"><?php echo lang('quote_grounds'); ?></label>
+                <input type="text" name="quote_grounds" id="quote_grounds" class="form-control"
+                       value="<?=$this->mdl_settings->setting('default_quote_grounds')?>"/>
             </div>
 
             <div class="form-group">

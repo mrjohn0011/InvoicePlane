@@ -79,6 +79,7 @@ class Ajax extends Admin_Controller
                 'quote_status_id' => $this->input->post('quote_status_id'),
                 'quote_password' => $this->input->post('quote_password'),
                 'notes' => $this->input->post('notes'),
+                'quote_grounds' => $this->input->post('quote_grounds'),
                 'quote_discount_amount' => $quote_discount_amount,
                 'quote_discount_percent' => $quote_discount_percent,
             );
@@ -228,6 +229,7 @@ class Ajax extends Admin_Controller
             'tax_rates' => $this->mdl_tax_rates->get()->result(),
             'client_name' => $this->input->post('client_name'),
             'clients' => $this->mdl_clients->get()->result(),
+            'quote_grounds' => $this->input->post('quote_grounds')
         );
 
         $this->layout->load_view('quotes/modal_create_quote', $data);

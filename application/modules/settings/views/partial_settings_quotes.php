@@ -50,6 +50,14 @@
     </div>
 
     <div class="form-group">
+        <label for="settings[default_quote_notes]">
+            <?php echo lang('default_quote_grounds'); ?>
+        </label>
+        <input type="text" name="settings[default_quote_grounds]"
+              class="input-sm form-control" value="<?php echo $this->mdl_settings->setting('default_quote_grounds'); ?>"/>
+</div>
+
+    <div class="form-group">
         <hr/>
         <h4><?php echo lang('quote_template'); ?></h4>
     </div>

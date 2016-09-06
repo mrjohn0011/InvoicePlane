@@ -11,6 +11,7 @@
                     client_name: $('#client_name').val(),
                     quote_date_created: $('#quote_date_created').val(),
                     invoice_group_id: $('#invoice_group_id').val(),
+                    quote_grounds: $('#quote_grounds').val(),
                     user_id: $('#user_id').val()
                 },
                 function (data) {
@@ -86,6 +87,18 @@
                                     <?php if ($this->mdl_settings->setting('default_quote_group') == $invoice_group->invoice_group_id) { ?>selected="selected"<?php } ?>><?php echo $invoice_group->invoice_group_name; ?></option>
                         <?php } ?>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="quote_grounds">
+                    <?php echo lang('quote_grounds'); ?>
+                </label>
+
+                <div class="controls">
+                    <input type="text" name="quote_grounds" id="quote_grounds"
+                           class="form-control" autocomplete="off"
+                           value="<?php echo $quote->quote_grounds; ?>">
                 </div>
             </div>
 
