@@ -25,10 +25,12 @@
             </td>
     </tr>
 
+    <? if (!empty($quote->quote_grounds)){  ?>
     <tr>
         <td>Основание:</td>
         <td><?=$quote->quote_grounds;?></td>
     </tr>
+    <? } ?>
 </table>
 
 <table cellspacing="0" cellpadding="5" style="width: 100%; margin-top: 20px; border: 1px solid #000; border-width: 1px 0px 0px 1px; text-align: left;">
