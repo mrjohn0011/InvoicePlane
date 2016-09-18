@@ -61,8 +61,8 @@
                 <label for="client_name"><?php echo lang('client'); ?></label>
                 <select name="client_name" id="client_name" class="form-control" autofocus="autofocus">
                     <?php
-                    foreach ($clients as $client){
-                        echo "<option value='".htmlspecialchars($client->client_name, ENT_QUOTES, "UTF-8")."' ";
+                    foreach ($clients as $client) {
+                        echo "<option value=\"" . htmlspecialchars($client->client_name) . "\" ";
                         if ($client_name == $client->client_name) echo 'selected';
                         echo ">".htmlspecialchars($client->client_name, ENT_QUOTES, "UTF-8")."</option>";
                     }
