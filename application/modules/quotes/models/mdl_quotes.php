@@ -149,7 +149,7 @@ class Mdl_Quotes extends Response_Model
             'quote_number' => array(
                 'field' => 'quote_number',
                 'label' => lang('quote').' #',
-                'rules' => 'required|is_unique[ip_quotes.quote_number' . (($this->id) ? '.quote_id.' . $this->id : '') . ']'
+                'rules' => 'required'
             ),
             'quote_date_created' => array(
                 'field' => 'quote_date_created',
