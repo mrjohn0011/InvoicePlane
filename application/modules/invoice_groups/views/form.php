@@ -44,6 +44,36 @@
 
         <div class="form-group">
             <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
+                <label class="control-label" for="invoice_group_pdf_template"><?php echo lang('invoice_group_pdf_template'); ?>: </label>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-lg-8">
+                <select name="invoice_group_pdf_template" id="invoice_group_pdf_template" class="input-sm form-control">
+                    <option value=""></option>
+                    <?php foreach ($pdf_invoice_templates as $invoice_template) { ?>
+                        <option value="<?php echo $invoice_template; ?>"
+                                <?php if ($this->mdl_invoice_groups->form_value('invoice_group_pdf_template') == $invoice_template) { ?>selected="selected"<?php } ?>><?php echo $invoice_template; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
+                <label class="control-label" for="invoice_group_email_template"><?php echo lang('invoice_group_email_template'); ?>: </label>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-lg-8">
+                <select name="invoice_group_email_template" id="invoice_group_email_template" class="input-sm form-control">
+                    <option value=""></option>
+                    <?php foreach ($email_invoice_templates as $invoice_template) { ?>
+                        <option value="<?php echo $invoice_template->email_template_id; ?>"
+                                <?php if ($this->mdl_invoice_groups->form_value('invoice_group_email_template') == $invoice_template->email_template_id) { ?>selected="selected"<?php } ?>><?php echo $invoice_template->email_template_title; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                 <label class="control-label" for="invoice_group_left_pad"><?php echo lang('left_pad'); ?>: </label>
             </div>
             <div class="col-xs-12 col-sm-8 col-lg-8">

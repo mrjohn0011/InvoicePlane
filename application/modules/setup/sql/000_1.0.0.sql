@@ -111,6 +111,8 @@ CREATE TABLE `ip_invoice_groups` (
   `invoice_group_name`         VARCHAR(50) NOT NULL DEFAULT '',
   `invoice_group_prefix`       VARCHAR(10) NOT NULL DEFAULT '',
   `invoice_group_next_id`      INT(11)     NOT NULL,
+  `invoice_group_pdf_template`      VARCHAR(50)     NOT NULL,
+  `invoice_group_email_template`      INT(11)     NOT NULL,
   `invoice_group_left_pad`     INT(2)      NOT NULL DEFAULT '0',
   `invoice_group_prefix_year`  INT(1)      NOT NULL DEFAULT '0',
   `invoice_group_prefix_month` INT(1)      NOT NULL DEFAULT '0',

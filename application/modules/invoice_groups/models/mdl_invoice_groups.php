@@ -53,6 +53,14 @@ class Mdl_Invoice_Groups extends Response_Model
                 'field' => 'invoice_group_left_pad',
                 'label' => lang('left_pad'),
                 'rules' => 'required'
+            ),
+            'invoice_group_pdf_template' => array(
+                'field' => 'invoice_group_pdf_template',
+                'label' => lang('invoice_group_pdf_template')
+            ),
+            'invoice_group_email_template' => array(
+                'field' => 'invoice_group_email_template',
+                'label' => lang('invoice_group_email_template')
             )
         );
     }

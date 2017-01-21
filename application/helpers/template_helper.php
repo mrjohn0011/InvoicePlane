@@ -65,8 +65,13 @@ function parse_template($object, $body)
 function select_pdf_invoice_template($invoice)
 {
     $CI =& get_instance();
+    $mdl_invoice_groups = $CI->load->model('invoice_groups/mdl_invoice_groups');
+    $current_group = $mdl_invoice_groups->get_by_id($invoice->invoice_group_id);
 
-    if ($invoice->is_overdue) {
+    if ($current_group->invoice_group_pdf_template) {
+        //Use group template
+        return $current_group->invoice_group_pdf_template;
+    } elseif ($invoice->is_overdue) {
         // Use the overdue template
         return $CI->mdl_settings->setting('pdf_invoice_template_overdue');
     } elseif ($invoice->invoice_status_id == 4) {
@@ -81,8 +86,13 @@ function select_pdf_invoice_template($invoice)
 function select_email_invoice_template($invoice)
 {
     $CI =& get_instance();
+    $mdl_invoice_groups = $CI->load->model('invoice_groups/mdl_invoice_groups');
+    $current_group = $mdl_invoice_groups->get_by_id($invoice->invoice_group_id);
 
-    if ($invoice->is_overdue) {
+    if ($current_group->invoice_group_email_template) {
+        //Use group template
+        return $current_group->invoice_group_email_template;
+    } elseif ($invoice->is_overdue) {
         // Use the overdue template
         return $CI->mdl_settings->setting('email_invoice_template_overdue');
     } elseif ($invoice->invoice_status_id == 4) {

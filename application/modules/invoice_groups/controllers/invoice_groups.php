@@ -23,6 +23,8 @@ class Invoice_Groups extends Admin_Controller
         parent::__construct();
 
         $this->load->model('mdl_invoice_groups');
+        $this->load->model('invoices/mdl_templates');
+        $this->load->model('email_templates/mdl_email_templates');
     }
 
     public function index($page = 0)
@@ -37,6 +39,15 @@ class Invoice_Groups extends Admin_Controller
 
     public function form($id = NULL)
     {
+
+        $pdf_invoice_templates = $this->mdl_templates->get_invoice_templates('pdf');
+        $email_invoice_templates = $this->mdl_email_templates->where('email_template_type', 'invoice')->get()->result();
+
+        $this->layout->set(array(
+            'pdf_invoice_templates' => $pdf_invoice_templates,
+            'email_invoice_templates' => $email_invoice_templates
+        ));
+
         if ($this->input->post('btn_cancel')) {
             redirect('invoice_groups');
         }
