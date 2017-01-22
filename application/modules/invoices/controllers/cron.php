@@ -16,20 +16,46 @@ if (!defined('BASEPATH'))
  * 
  */
 
+define("OVERTIME_BEFORE_ACTIONS", "5"); //Count of days after the overdue date but before actions execution
+define("STATUS_DRAFT", 1);
+
 class Cron extends Base_Controller
 {
-    public function recur($cron_key = NULL)
-    {
+    private function loadDependencies(){
+        $this->load->model('invoices/mdl_invoices_recurring');
+        $this->load->model('invoices/mdl_invoices');
+        $this->load->helper('mailer');
+        $this->load->helper('template');
+    }
+
+    private function runActionsOnOverdue(){
+        $overdue_invoices = $this->mdl_invoices->is_overdue()->get()->result();
+
+        foreach($overdue_invoices as $invoice){
+            $overdue_actions = $invoice->invoice_custom_actions_on_overdue;
+            if (!$overdue_actions || $invoice->days_overdue !== OVERTIME_BEFORE_ACTIONS) continue;
+
+            preg_match_all("/[a-z0-9_-]+\\(('[a-z0-9_-]*',?\\s*)*\\)/i", $overdue_actions, $actions);
+            $date = date("Y-m-d H:i:s");
+
+            foreach($actions[0] as $action){
+                $this->db->insert('ip_action_queue', array(
+                    'action' => $action,
+                    'planned' => $date
+                ));
+            }
+        }
+    }
+
+    public function recur($cron_key = NULL){
         // Check the provided cron key
         if ($cron_key != $this->mdl_settings->setting('cron_key')) {
             if (IP_DEBUG) log_message('error', 'Wrong cron key provided!');
             exit('Wrong cron key!');
         }
 
-        $this->load->model('invoices/mdl_invoices_recurring');
-        $this->load->model('invoices/mdl_invoices');
-        $this->load->helper('mailer');
-        $this->load->helper('template');
+        $this->loadDependencies();
+        $this->runActionsOnOverdue();
 
         // Gather a list of recurring invoices to generate
         $invoices_recurring = $this->mdl_invoices_recurring->active()->get()->result();
@@ -42,7 +68,7 @@ class Cron extends Base_Controller
             // $invoice = $this->db->where('ip_invoices.invoice_id', $source_id)->get('ip_invoices')->row();
             $invoice = $this->mdl_invoices->get_by_id($source_id);
 
-            if ($invoice->invoice_status_id == 1){
+            if ($invoice->invoice_status_id == STATUS_DRAFT){
                 $target_id = $source_id;
             } else {
                 // Create the new invoice
