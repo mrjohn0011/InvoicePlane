@@ -35,7 +35,7 @@ function format_currency($amount)
 
 function format_amount($amount = NULL)
 {
-    if ($amount) {
+    if ($amount!==NULL) {
         $CI =& get_instance();
         $thousands_separator = $CI->mdl_settings->setting('thousands_separator');
         $decimal_point = $CI->mdl_settings->setting('decimal_point');

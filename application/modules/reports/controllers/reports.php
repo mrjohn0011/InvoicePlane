@@ -95,4 +95,29 @@ class Reports extends Admin_Controller
         $this->layout->buffer('content', 'reports/sales_by_year_index')->render();
     }
 
+    public function sverka(){
+        if ($this->input->post('btn_submit')) {
+            $data = array(
+                'results' => $this->mdl_reports->sverka(
+                    $this->input->post('client_id'),
+                    $this->input->post('from_date'),
+                    $this->input->post('to_date')
+                )
+            );
+
+            $html = $this->load->view('reports/sverka', $data, TRUE);
+
+            $this->load->helper('mpdf');
+
+            pdf_create($html, lang('sverka'), TRUE);
+        }
+
+        $this->load->model('clients/mdl_clients');
+
+        $data = array(
+            'clients' => $this->mdl_clients->get()->result()
+        );
+
+        $this->layout->buffer('content', 'reports/sverka_index', $data)->render();
+    }
 }

@@ -165,4 +165,36 @@ class Mdl_Reports extends CI_Model
         return $this->db->get('ip_clients')->result();
     }
 
+    public function sverka($client_id, $from_date = NULL, $to_date = NULL){
+        if ($from_date and $to_date) {
+            $from_date = date_to_mysql($from_date);
+            $to_date = date_to_mysql($to_date);
+        }
+
+        $this->db->select('number, `date`, amount, type, client_name');
+        $this->db->where("client_id", $client_id);
+        $this->db->where("date >=", $from_date);
+        $this->db->where("date <=", $to_date);
+        $this->db->order_by('date');
+
+        $table = $this->db->get('payments_acts')->result();
+
+        $this->db->select("SUM(`amount`) as 'saldo', `type`");
+        $this->db->where("client_id", $client_id);
+        $this->db->where("date <", $from_date);
+        $this->db->group_by("type");
+        $saldo = array();
+
+        foreach ($this->db->get('payments_acts')->result() as $row){
+            $saldo[$row->type] = $row->saldo;
+        }
+
+        return array(
+            'table' => $table,
+            'dateFrom' => date_from_mysql($from_date, true),
+            'dateTo' => date_from_mysql($to_date, true),
+            'client_name' => $table[0]->client_name,
+            'saldo' => $saldo
+        );
+    }
 }
