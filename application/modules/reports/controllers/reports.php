@@ -120,4 +120,23 @@ class Reports extends Admin_Controller
 
         $this->layout->buffer('content', 'reports/sverka_index', $data)->render();
     }
+
+    public function total_profit(){
+        if ($this->input->post('btn_submit')) {
+            $data = array(
+                'results' => $this->mdl_reports->total_profit(
+                    $this->input->post('from_date'),
+                    $this->input->post('to_date')
+                )
+            );
+
+            $html = $this->load->view('reports/total_profit', $data, TRUE);
+
+            $this->load->helper('mpdf');
+
+            pdf_create($html, lang('total_profit'), TRUE);
+        }
+
+        $this->layout->buffer('content', 'reports/total_profit_index')->render();
+    }
 }

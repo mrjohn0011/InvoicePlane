@@ -197,4 +197,23 @@ class Mdl_Reports extends CI_Model
             'saldo' => $saldo
         );
     }
+
+    public function total_profit($date_from, $date_to){
+        if ($date_from and $date_to) {
+            $date_from = date_to_mysql($date_from);
+            $date_to = date_to_mysql($date_to);
+        }
+
+        $this->db->select("client_name, SUM(payment_amount) as 'total_payment', SUM(partner_price) as 'total_partner', SUM(profit) as 'profit'");
+        $this->db->where("payment_date >=", $date_from);
+        $this->db->where("payment_date <=", $date_to);
+        $this->db->group_by('client_name');
+        $this->db->order_by('profit desc');
+
+        return array(
+            'dateFrom' => date_from_mysql($date_from, true),
+            'dateTo' => date_from_mysql($date_to, true),
+            'table' => $this->db->get('total_profit')->result()
+        );
+    }
 }

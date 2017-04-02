@@ -505,6 +505,7 @@ $lang = array(
     'total_balance'                                => 'Итоговый баланс',
     'total_billed'                                 => 'Счетов на сумму',
     'total_paid'                                   => 'Итого оплачено',
+	'total_profit'								   => 'Чистая прибыль',
     'try_again'                                    => 'Повторить',
     'type'                                         => 'Тип',
     'unknown'                                      => 'Неизвестно',

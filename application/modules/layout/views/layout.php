@@ -226,6 +226,7 @@
                         <li><?php echo anchor('reports/sales_by_client', lang('sales_by_client')); ?></li>
                         <li><?php echo anchor('reports/sales_by_year', lang('sales_by_date')); ?></li>
                         <li><?php echo anchor('reports/sverka', lang('sverka')); ?></li>
+                        <li><?php echo anchor('reports/total_profit', lang('total_profit')); ?></li>
                     </ul>
                 </li>
 
